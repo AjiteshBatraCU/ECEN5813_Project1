@@ -14,4 +14,4 @@ makefile : $(objects)
 #
 	
 clean : 
-		rm makefile $(objects) 
+	rm makefile $(objects) 
