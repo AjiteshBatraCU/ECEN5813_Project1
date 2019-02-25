@@ -15,7 +15,8 @@ void alloc (int32_t n) 	//n is number of 32 bit words to allocate
    if (ptr != NULL)	
    {
        free(ptr);
-       printf("Old Malloc destroyed.\n\r");
+       ptr = NULL;
+       printf("Old Malloc destroyed.\n");
    }
     
 
@@ -24,9 +25,8 @@ void alloc (int32_t n) 	//n is number of 32 bit words to allocate
    
    if (ptr == NULL)	//if pointer returns NULL, announce failure
    {
-       printf("Malloc failed");
+       printf("Malloc failed\n>>");
    }
-   else printf("Address = %x\n", ptr);	//else print out memory address
+   else printf("Address = %x\n>>", ptr);	//else print out memory address
 
 }
-

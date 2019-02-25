@@ -1,4 +1,5 @@
 help
+read
 alloc
 2
 free
