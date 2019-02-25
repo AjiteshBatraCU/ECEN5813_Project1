@@ -10,7 +10,7 @@
 #include "invert.h"
 
 char *ptr;
-int32_t num;
+int32_t mem_size;
 
 
 int main()
@@ -28,7 +28,6 @@ int main()
             i++;
         }
         user_input[i] = 0;
-        //printf("%s\n",user_input);
         if (strcmp(user_input, "help") == 0)
         {
            help();
@@ -36,12 +35,12 @@ int main()
         else if (strcmp(user_input, "alloc") == 0)
         {
             printf("Enter number of words of memory to allocate:");
-            scanf("%d", &num);
-            alloc(num);
+            scanf("%d", &mem_size);
+            alloc(mem_size);
         }
         else if (strcmp(user_input, "free") == 0)
         {
-            free();
+            mem_free();
         }
         else if (strcmp(user_input, "read") == 0)
         {
@@ -50,7 +49,7 @@ int main()
             scanf("%x", &location);
             printf("Enter the number of words to write: ");
             scanf("%x", &size);
-            void Read(int location, int size)
+            read(int location, int size);
 
         }
         else if (strcmp(user_input, "write") == 0)
@@ -62,7 +61,7 @@ int main()
             scanf("%x", &value);
             printf("Enter the number of words to write: ");
             scanf("%x", &size);
-            void Write(location, value, size);
+            Write(location, value, size);
         }
         else if (strcmp(user_input, "invert") == 0)
         {

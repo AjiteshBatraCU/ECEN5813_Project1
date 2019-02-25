@@ -1,6 +1,6 @@
 #ifndef FREE_H
 #define FREE_H
 
-void free(void);
+void mem_free();
 
 #endif

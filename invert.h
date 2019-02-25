@@ -1,6 +1,6 @@
 #ifndef FREE_H
 #define FREE_H
 
-void invert(void);
+void invert();
 
 #endif

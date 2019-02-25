@@ -10,7 +10,7 @@
 extern char *ptr;
 extern int32_t mem_size;
 
-void invert(void)
+void invert()
 {
     clock_t t; 
     t = clock(); 
