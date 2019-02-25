@@ -19,7 +19,7 @@ void invert()
 
     void *inverse_ptr = &mem_inverse;
     
-    for (int i = 0; (i <= (sizeof(int32_t)*(mem_size-1))); (i = i + (sizeof(int32_t))))
+    for (int i = 0; (i < (sizeof(int32_t)*mem_size)); (i = i + (sizeof(int32_t))))
     {
         mem_inverse = *((int32_t *)(ptr + i));
         mem_inverse = ~mem_inverse;

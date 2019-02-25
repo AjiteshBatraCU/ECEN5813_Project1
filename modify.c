@@ -14,7 +14,7 @@ void Write(int location, int value, int size)
 {
 
     void *value_ptr = &value; //pointer to user value to write
-    void *malloc_step = ptr + (sizeof(uint32_t)*(location-1)); //step @ starting location passsed into function
+    void *malloc_step = ptr + (sizeof(uint32_t)*(location-1)); //step @ starting location passed into function
     void *final_location = malloc_step + (sizeof(uint32_t)*size); //final location = step + size of the passed in value
 
     /* Copy value of passed value to the passed location

@@ -45,17 +45,17 @@ int main()
         else if (strcmp(user_input, "read") == 0)
         {
             int location, size;
-            printf("Enter the memory location between : ");
+            printf("Which of the %d memory words would you like to start at : ", mem_size);
             scanf("%x", &location);
-            printf("Enter the number of words to write: ");
+            printf("Enter the number of words to read: ");
             scanf("%x", &size);
-            read(int location, int size);
+            Read(location, size);
 
         }
         else if (strcmp(user_input, "write") == 0)
         {
             int location, value, size;
-            printf("Enter the memory location between : ");
+            printf("Which of the %d memory words would you like to start at : ", mem_size);
             scanf("%x", &location);
             printf("Enter the data to be entered: ");
             scanf("%x", &value);
@@ -69,6 +69,7 @@ int main()
         }
         else if (strcmp(user_input, "exit") == 0)
         {
+	    mem_free();
             exit(0);
         }
         // else

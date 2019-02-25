@@ -11,6 +11,6 @@ extern char *ptr;
 void mem_free()
 {
    free(ptr);
-   printf("Allocated memory freed");
+   printf("Allocated memory freed\n");
 
 }
