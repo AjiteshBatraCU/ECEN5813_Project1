@@ -1,4 +1,4 @@
-objects = main.o help.o alloc.o free.o display.o modify.o set_pattern.o verify_pattern.o
+objects = main.o help.o alloc.o free.o display.o modify.o set_pattern.o verify_pattern.o invert.c
 
 #flag: 
 # -g = debugging
