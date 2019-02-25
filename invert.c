@@ -19,21 +19,19 @@ void invert(void)
 
     void *inverse_ptr = &mem_inverse;
     
-    for (int i = 0; (i <= 32*(mem_size-1)); (i = i + 32))
+    for (int i = 0; (i <= (sizeof(int32_t)*(mem_size-1))); (i = i + (sizeof(int32_t))))
     {
-        //printf("value at flip = %x\n", *((int32_t *)(ptr+i)));
         mem_inverse = *((int32_t *)(ptr + i));
-        //printf("mem_inverse = %x\n", mem_inverse);
         mem_inverse = ~mem_inverse;
        
         memcpy((ptr+i), inverse_ptr, 4);
-       
-       //printf("flip location = %x\n", (ptr+i));
+       printf("\naddress: %x ", (ptr+i));
+	    printf("0x%x", *((int32_t *)(ptr+i)));
        
     }
     
     t = clock() - t; 
     double time_taken = ((double)t)/CLOCKS_PER_SEC*1000; // in microseconds
     
-    printf("Time taken to flip ya bits = %f milliseconds", time_taken);
+    printf("\nTime taken to flip ya bits = %f milliseconds", time_taken);
 }

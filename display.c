@@ -9,23 +9,17 @@
 
 extern char *ptr;
 
-void write(int location, int size)
+void Read(int location, int size)
 {
-    void *malloc_step = ptr + 32*(location-1); //step @ starting location passed into function
-    void *final_location = malloc_step + 32*(size); //final location = step + number of words requested
+    void *malloc_step = ptr + (sizeof(uint32_t)*(location-1)); //step @ starting location passed into function
+    void *final_location = malloc_step + (sizeof(uint32_t)*(size)); //final location = step + number of words requested
 	
-    printf("Data at address %x:\n", malloc_step);
+    printf("Data at address %x:", malloc_step);
 
-    count = 0;
-    for (malloc_step; malloc_step <= final_location; (malloc_step += sizeof(int32_t)))
+    for (malloc_step; malloc_step < final_location; (malloc_step += sizeof(int32_t)))
     {
-        if ( count == 1)
-        {
-            printf("\n");
-            count = 0;
-        }
+        printf("\naddress: %x ", malloc_step);
 	    printf("0x%x", *((int32_t *)(malloc_step)));
-	    count++;
     }
 	
 }
