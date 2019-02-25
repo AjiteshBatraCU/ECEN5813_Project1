@@ -1,9 +1,17 @@
 #include <stdio.h>
-#include "help.h"
-
-#include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+
+#include "help.h"
+#include "alloc.h"
+#include "free.h"
+#include "modify.h"
+#include "display.h"
+#include "invert.h"
+
+char *ptr;
+int32_t num;
+
 
 int main()
 {
@@ -23,51 +31,45 @@ int main()
         //printf("%s\n",user_input);
         if (strcmp(user_input, "help") == 0)
         {
-            printf("Help Menu:\n");
-            printf("alloc : Allocate memory - Enter the number of words of memory to allocate. Enter the number of words followed by the command\n");
-            printf("free : Free memory - Frees the previously allocated memory block.\n");
-            printf("read : Display memory words - Displays contents of the memory in 32-bit hex format.\n");
-            printf("write : Write memory words - Enter the address and 32-bit value to write to the address.\n");
-            printf("invert : Invert block - Invert all memory bits in a specified memory area. It also reports the time taken by the operation.\n>>");
+           help();
         }
         else if (strcmp(user_input, "alloc") == 0)
         {
-            int num;
             printf("Enter number of words of memory to allocate:");
             scanf("%d", &num);
-            printf("Number of words: %d\n", num);
-            printf("allocating\n>>");
+            alloc(num);
         }
         else if (strcmp(user_input, "free") == 0)
         {
-
-            printf("free\n>>");
-            //free();
+            free();
         }
         else if (strcmp(user_input, "read") == 0)
         {
-            //printf("Enter the memory location between %x and %x: ",add1,add2);
-            //printf("Number of memory words to read: ");
-            printf("reading\n>>");
-            //read();
+            int location, size;
+            printf("Enter the memory location between : ");
+            scanf("%x", &location);
+            printf("Enter the number of words to write: ");
+            scanf("%x", &size);
+            void Read(int location, int size)
+
         }
         else if (strcmp(user_input, "write") == 0)
         {
-            //printf("Enter the memory location between %x and %x: ",add1,add2);
-            //printf("Enter the data to be entered: ");
-            //printf("")
-
-            printf("writing\n>>");
-            //write();
+            int location, value, size;
+            printf("Enter the memory location between : ");
+            scanf("%x", &location);
+            printf("Enter the data to be entered: ");
+            scanf("%x", &value);
+            printf("Enter the number of words to write: ");
+            scanf("%x", &size);
+            void Write(location, value, size);
         }
         else if (strcmp(user_input, "invert") == 0)
         {
-            printf("inverting\n>>");
-            //invert();
+            invert();
         }
         else if (strcmp(user_input, "exit") == 0)
         {
-            printf("exiting");
             exit(0);
         }
         // else
