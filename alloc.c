@@ -8,9 +8,14 @@
 #include <stdlib.h>
 
 extern char *ptr;
+extern int32_t mem_size;
 
-void alloc (int32_t n) 	//n is number of 32 bit words to allocate
+void alloc (void) 	//n is number of 32 bit words to allocate
 {    
+
+	printf("Enter number of words of memory to allocate:");
+    scanf("%d", &mem_size);
+	
    /* If memory has been previously allocated, free it and inform the user */
    if (ptr != NULL)	
    {
@@ -20,7 +25,7 @@ void alloc (int32_t n) 	//n is number of 32 bit words to allocate
     
 
    /* Initial memory allocation */
-   ptr = (void *) malloc(n*4);
+   ptr = (void *) malloc(mem_size*4);
    
    if (ptr == NULL)	//if pointer returns NULL, announce failure
    {

@@ -12,6 +12,24 @@
 char *ptr;
 int32_t mem_size;
 
+typedef void (*function_ptr)(void);
+
+struct functionlist {
+  char *string;
+  function_ptr function;
+};
+
+const struct functionlist functions[] = {
+	{"help", &help},
+	{"alloc", &alloc},
+	{"free", &free},
+	{"read", &read},
+    {"write", &write},
+	{"invert", &invert},
+	{"exit", &exit},
+    {"set pattern", &set_pattern},
+	{"verify pattern", &verify_pattern}
+};
 
 int main()
 {
@@ -20,8 +38,23 @@ int main()
 
     printf("Welcome to the Interactive Memory Management Project\nType in help for info about the features, exit to exit\n>>");
     while (1)
-    {
-        int i = 0;
+	{	
+	int i = 0;
+        while ((c = getchar()) != '\n' && c != EOF)
+        {
+            user_input[i] = c;
+            i++;
+        }
+        user_input[i] = 0;
+        for (int j=0; j<=8; j++)
+        {
+            if (strcmp(user_input, functions[j].string) == 0)
+            {
+               functions[j].function();
+            }
+        }
+
+		/*
         while ((c = getchar()) != '\n' && c != EOF)
         {
             user_input[i] = c;
@@ -75,6 +108,6 @@ int main()
         // else
         // {
         //     printf("Invalid input. Enter help for available commands.\n>>");
-        // }
+        // }*/
     }
 }

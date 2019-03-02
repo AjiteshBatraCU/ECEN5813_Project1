@@ -9,8 +9,14 @@
 
 extern char *ptr;
 
-void Read(int location, int size)
+void Read(void)
 {
+	int location, size;
+    printf("Which of the %d memory words would you like to start at : ", mem_size);
+    scanf("%x", &location);
+    printf("Enter the number of words to read: ");
+    scanf("%x", &size);
+			
     void *malloc_step = ptr + (sizeof(uint32_t)*(location-1)); //step @ starting location passed into function
     void *final_location = malloc_step + (sizeof(uint32_t)*(size)); //final location = step + number of words requested
 	

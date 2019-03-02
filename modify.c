@@ -10,8 +10,15 @@
 
 extern char *ptr;
 
-void Write(int location, int value, int size)
+void Write(void)
 {
+	int location, value, size;
+    printf("Which of the %d memory words would you like to start at : ", mem_size);
+    scanf("%x", &location);
+    printf("Enter the data to be entered: ");
+    scanf("%x", &value);
+    printf("Enter the number of words to write: ");
+    scanf("%x", &size);
 
     void *value_ptr = &value; //pointer to user value to write
     void *malloc_step = ptr + (sizeof(uint32_t)*(location-1)); //step @ starting location passed into function
