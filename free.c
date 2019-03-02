@@ -7,10 +7,12 @@
 #include <stdlib.h>
 
 extern char *ptr;
+extern int32_t mem_size;
 
 void mem_free()
 {
    free(ptr);
-   printf("Allocated memory freed\n");
-
+   ptr = NULL;
+   mem_size = 0;
+   printf("Allocated memory freed\n>>");
 }
