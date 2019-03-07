@@ -9,10 +9,11 @@
 #include <string.h>
 
 extern char *ptr;
+extern int32_t mem_size;
 
-void Write(void)
+void write(void)
 {
-	int location, value, size;
+    int location, value, size;
     printf("Which of the %d memory words would you like to start at : ", mem_size);
     scanf("%x", &location);
     printf("Enter the data to be entered: ");

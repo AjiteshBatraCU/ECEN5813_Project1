@@ -8,6 +8,8 @@
 #include "modify.h"
 #include "display.h"
 #include "invert.h"
+#include "set_pattern.h"
+#include "verify_pattern.h"
 
 char *ptr;
 int32_t mem_size;
@@ -22,13 +24,13 @@ struct functionlist {
 const struct functionlist functions[] = {
 	{"help", &help},
 	{"alloc", &alloc},
-	{"free", &free},
+	{"free", &mem_free},
 	{"read", &read},
-    {"write", &write},
+   	{"write", &write},
 	{"invert", &invert},
 	{"exit", &exit},
-    {"set pattern", &set_pattern},
-	{"verify pattern", &verify_pattern}
+   	{"pattern", &set_pattern},
+	{"verify", &verify_pattern}
 };
 
 int main()

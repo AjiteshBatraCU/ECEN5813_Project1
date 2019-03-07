@@ -10,7 +10,7 @@
 extern char *ptr;
 extern int32_t mem_size;
 
-void alloc (void) 	//n is number of 32 bit words to allocate
+void alloc (void) 	
 {    
 
 	printf("Enter number of words of memory to allocate:");
