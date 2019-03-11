@@ -16,6 +16,7 @@ int32_t mem_size;
 
 typedef void (*function_ptr)(void);
 void functionnotfound (void);
+void exitprogram (void);
 
 struct functionlist {
   char *string;
@@ -29,7 +30,7 @@ const struct functionlist functions[] = {
 	{"read", &read},
    	{"write", &write},
 	{"invert", &invert},
-	{"exit", &exit},
+	{"exit", &exitprogram},
    	{"pattern", &set_pattern},
 	{"verify", &verify_pattern},
 	{" ", &functionnotfound}
@@ -58,10 +59,10 @@ int main()
 		check = 1;
                 functions[j].function();
             }
-	    else if (j == 8 && check != 1)
+	    /*else if (j == 8 && check != 1)
 	    {
 		functions[9].function();
-	    }
+	    }*/
         }
 
     }
@@ -70,4 +71,8 @@ int main()
 void functionnotfound (void)
 {
      printf("User input does not match any of the options. Please try again.\n>>");
+}
+void exitprogram (void)
+{
+     exit(0);
 }
