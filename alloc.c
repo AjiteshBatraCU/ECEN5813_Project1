@@ -7,7 +7,7 @@
 #include <stdint.h>
 #include <stdlib.h>
 
-extern char *ptr;
+extern int32_t *ptr;
 extern int32_t mem_size;
 
 void alloc (void) 	//n is number of 32 bit words to allocate
@@ -25,7 +25,7 @@ void alloc (void) 	//n is number of 32 bit words to allocate
     
 
    /* Initial memory allocation */
-   ptr = (void *) malloc(mem_size*4);
+   ptr = (int32_t *) malloc(mem_size*4);
    
    if (ptr == NULL)	//if pointer returns NULL, announce failure
    {

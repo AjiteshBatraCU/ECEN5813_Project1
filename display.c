@@ -7,9 +7,10 @@
 #include <stdio.h>
 #include <stdint.h>
 
-extern char *ptr;
+extern int32_t mem_size ;
+extern int32_t *ptr;
 
-void Read(void)
+void read()
 {
 	int location, size;
     printf("Which of the %d memory words would you like to start at : ", mem_size);

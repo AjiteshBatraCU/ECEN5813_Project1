@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <stdint.h>
 
 #include "help.h"
 #include "alloc.h"
@@ -8,8 +9,10 @@
 #include "modify.h"
 #include "display.h"
 #include "invert.h"
+#include "set_pattern.h"
+#include "verify_pattern.h"
 
-char *ptr;
+int32_t *ptr;
 int32_t mem_size;
 
 typedef void (*function_ptr)(void);
@@ -22,7 +25,7 @@ struct functionlist {
 const struct functionlist functions[] = {
 	{"help", &help},
 	{"alloc", &alloc},
-	{"free", &free},
+	{"free", &mem_free},
 	{"read", &read},
     {"write", &write},
 	{"invert", &invert},
@@ -34,7 +37,7 @@ const struct functionlist functions[] = {
 int main()
 {
     char c;
-    char user_input[10] = {0};
+    char user_input[15] = {0};
 
     printf("Welcome to the Interactive Memory Management Project\nType in help for info about the features, exit to exit\n>>");
     while (1)

@@ -8,9 +8,10 @@
 #include <stdint.h>
 #include <string.h>
 
-extern char *ptr;
+extern int32_t *ptr;
+extern int32_t mem_size ;
 
-void Write(void)
+void write()
 {
 	int location, value, size;
     printf("Which of the %d memory words would you like to start at : ", mem_size);

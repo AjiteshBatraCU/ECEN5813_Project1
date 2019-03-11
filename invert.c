@@ -7,7 +7,7 @@
 #include <string.h>
 #include <time.h>
 
-extern char *ptr;
+extern int32_t *ptr;
 extern int32_t mem_size ;
 
 void invert()
