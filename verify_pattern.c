@@ -29,5 +29,5 @@ void verify_pattern()
     t = clock() - t; 		//end time - start time
     double time_taken = ((double)t)/CLOCKS_PER_SEC*1000; // in microseconds
     
-    printf("\nTime taken to verify pattern = %f milliseconds", time_taken);
+    printf("Time taken to verify pattern = %f milliseconds\n>>", time_taken);
 }

@@ -8,6 +8,7 @@ alloc
 alloc
 12
 write
+14
 2
 12345678
 4
@@ -15,6 +16,13 @@ read
 2
 5
 invert
+2
+9
 invert
-
+2
+9
+pattern
+3
+9
+verify
 exit

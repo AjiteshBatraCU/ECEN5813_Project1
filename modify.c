@@ -9,17 +9,33 @@
 #include <string.h>
 
 extern int32_t *ptr;
-extern int32_t mem_size ;
+extern int32_t mem_size;
 
-void write()
+void write(void)
 {
-	int location, value, size;
+	
+    /* Check if memory allocated */
+   if (ptr != NULL)	
+   {
+
+    int location, value, size;
     printf("Which of the %d memory words would you like to start at : ", mem_size);
-    scanf("%x", &location);
+    scanf("%d", &location);
+    while (location > mem_size)
+	{
+		printf("Outside of allocated memory, please enter a location in the %d memory blocks allocated : ", mem_size);
+   		scanf("%d", &location);
+	}
+
     printf("Enter the data to be entered: ");
     scanf("%x", &value);
     printf("Enter the number of words to write: ");
-    scanf("%x", &size);
+    scanf("%d", &size);
+    while ((size + location - 1) > mem_size)
+	{
+		printf("Outside of allocated memory, please enter a number up to %d : ", (mem_size - location + 1));
+   		scanf("%d", &size);
+	}
 
     void *value_ptr = &value; //pointer to user value to write
     void *malloc_step = ptr + (sizeof(uint32_t)*(location-1)); //step @ starting location passed into function
@@ -28,10 +44,17 @@ void write()
     /* Copy value of passed value to the passed location
     * value of memory pointer + (# of 32-bit words * 4), step malloc_step by 4 bits, until size of passed int
     * Copy 8 bits into malloc_step from value*/
-    for (malloc_step; malloc_step < final_location; (malloc_step += sizeof(int32_t)))
+    for (; malloc_step < final_location; (malloc_step += sizeof(int32_t)))
     {
-        memcpy(malloc_step, value_ptr, 4);
-            printf("address: %x ", malloc_step);
+            memcpy(malloc_step, value_ptr, 4);
+            printf("address: %x ", (uint32_t)(intptr_t)(malloc_step));
             printf("Memory copied = %x\n", *((int32_t *)(malloc_step)));
     }
+    printf(">>");
+   }
+ else
+   {
+	printf("No memory allocated, please use alloc function to allocate memory before writing.\n>>");
+   }
+
 }

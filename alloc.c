@@ -10,10 +10,10 @@
 extern int32_t *ptr;
 extern int32_t mem_size;
 
-void alloc (void) 	//n is number of 32 bit words to allocate
+void alloc (void) 	
 {    
 
-	printf("Enter number of words of memory to allocate:");
+    printf("Enter number of words of memory to allocate:");
     scanf("%d", &mem_size);
 	
    /* If memory has been previously allocated, free it and inform the user */
@@ -31,7 +31,7 @@ void alloc (void) 	//n is number of 32 bit words to allocate
    {
        printf("Malloc failed");
    }
-   else printf("Address = %x\n", ptr);	//else print out memory address
+   else printf("Address = %x\n>>", (int32_t)(intptr_t)(ptr));	//else print out memory address
 
 }
 

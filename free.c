@@ -6,7 +6,7 @@
 #include <stdint.h>
 #include <stdlib.h>
 
-extern char *ptr;
+extern int32_t *ptr;
 extern int32_t mem_size;
 
 void mem_free()

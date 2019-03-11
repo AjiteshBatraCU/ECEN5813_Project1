@@ -1,6 +1,6 @@
 #ifndef MODIFY_H
 #define MODIFY_H
-#include <stdio.h>
-void write();
+
+void write(void);
 
 #endif

@@ -25,8 +25,8 @@ void set_pattern()
             int32_t value = my_rand(mem_size, (intptr_t)(malloc_step));
             void *value_ptr = &value; //pointer to user value to write
             memcpy(malloc_step, value_ptr, 4);
-            printf("address: %x ", (int32_t)(intptr_t)(malloc_step));
-            printf("Memory copied = %x\n", *((int32_t *)(malloc_step)));
+            printf("\naddress: %x ", (int32_t)(intptr_t)(malloc_step));
+            printf("Memory copied = %x", *((int32_t *)(malloc_step)));
     }
     t = clock() - t; 		//end time - start time
     double time_taken = ((double)t)/CLOCKS_PER_SEC*1000; // in microseconds
@@ -40,7 +40,7 @@ int32_t my_rand(int32_t seed, int32_t addr)
     next = seed;
     for(int i=1; i<=mem_size; i++)
     {
-        next = ((((next*(297121507398+addr*addr)) + (8376)))/21474836648)%4294967296;
+        next = ((((next*(297121507398+addr*addr)) + (837698981293)))/21474836648)%4294967296;
     }
     return next;
 }

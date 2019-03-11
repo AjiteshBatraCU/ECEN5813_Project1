@@ -14,6 +14,8 @@ main.o : main.c help.h alloc.h free.h display.h modify.h invert.h set_pattern.h 
 # file.o: file.c include_file_1.h include_file_2.h, etc...
 # 	gcc $(flags) -c file.c
 #
-	
+test :
+	./exec<test.txt
+
 clean : 
 	rm exec *.o

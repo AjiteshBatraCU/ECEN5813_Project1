@@ -7,26 +7,48 @@
 #include <stdio.h>
 #include <stdint.h>
 
-extern int32_t mem_size ;
 extern int32_t *ptr;
+extern int32_t mem_size;
 
-void read()
+void read (void)
 {
-	int location, size;
+    /* Check if memory allocated */
+   if (ptr != NULL)	
+   {
+
+    int location, size;
+
     printf("Which of the %d memory words would you like to start at : ", mem_size);
-    scanf("%x", &location);
+    scanf("%d", &location);
+    while (location > mem_size)
+	{
+		printf("Outside of allocated memory, please enter a location in the %d memory blocks allocated : ", mem_size);
+   		scanf("%d", &location);
+	}
+
     printf("Enter the number of words to read: ");
-    scanf("%x", &size);
+    scanf("%d", &size);
+    while ((size + location - 1) > mem_size)
+	{
+		printf("Outside of allocated memory, please enter a number up to %d : ", (mem_size - location + 1));
+   		scanf("%d", &size);
+	}
 			
+
     void *malloc_step = ptr + (sizeof(uint32_t)*(location-1)); //step @ starting location passed into function
     void *final_location = malloc_step + (sizeof(uint32_t)*(size)); //final location = step + number of words requested
-	
-    printf("Data at address %x:", malloc_step);
 
-    for (malloc_step; malloc_step < final_location; (malloc_step += sizeof(int32_t)))
+
+    for (; malloc_step < final_location; (malloc_step += sizeof(int32_t)))
     {
-        printf("\naddress: %x ", malloc_step);
+        printf("\naddress: %x ", (uint32_t)(intptr_t)(malloc_step));
 	    printf("0x%x", *((int32_t *)(malloc_step)));
     }
+    printf(">>");
+   }
+ else
+   {
+	printf("No memory allocated, please use alloc function to allocate memory before reading.\n>>");
+   }
 	
 }
