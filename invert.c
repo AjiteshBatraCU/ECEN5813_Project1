@@ -12,6 +12,11 @@ extern int32_t mem_size;
 
 void invert()
 {
+
+   /* Check if memory allocated */
+   if (ptr != NULL)	
+   {
+
     clock_t t; 
     t = clock(); 			//use clock function in time.h
     
@@ -34,4 +39,9 @@ void invert()
     double time_taken = ((double)t)/CLOCKS_PER_SEC*1000; // in microseconds
     
     printf("\nTime taken to flip ya bits = %f milliseconds", time_taken);
+   }
+   else
+   {
+	printf("No memory allocated, please use alloc function to allocate memory before inverting.\n");
+   }
 }

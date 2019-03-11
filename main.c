@@ -15,6 +15,7 @@ char *ptr;
 int32_t mem_size;
 
 typedef void (*function_ptr)(void);
+void functionnotfound (void);
 
 struct functionlist {
   char *string;
@@ -30,7 +31,8 @@ const struct functionlist functions[] = {
 	{"invert", &invert},
 	{"exit", &exit},
    	{"pattern", &set_pattern},
-	{"verify", &verify_pattern}
+	{"verify", &verify_pattern},
+	{" ", &functionnotfound}
 };
 
 int main()
@@ -48,68 +50,24 @@ int main()
             i++;
         }
         user_input[i] = 0;
+	int check = 0;
         for (int j=0; j<=8; j++)
         {
             if (strcmp(user_input, functions[j].string) == 0)
             {
-               functions[j].function();
+		check = 1;
+                functions[j].function();
             }
+	    else if (j == 8 && check != 1)
+	    {
+		functions[9].function();
+	    }
         }
 
-		/*
-        while ((c = getchar()) != '\n' && c != EOF)
-        {
-            user_input[i] = c;
-            i++;
-        }
-        user_input[i] = 0;
-        if (strcmp(user_input, "help") == 0)
-        {
-           help();
-        }
-        else if (strcmp(user_input, "alloc") == 0)
-        {
-            printf("Enter number of words of memory to allocate:");
-            scanf("%d", &mem_size);
-            alloc(mem_size);
-        }
-        else if (strcmp(user_input, "free") == 0)
-        {
-            mem_free();
-        }
-        else if (strcmp(user_input, "read") == 0)
-        {
-            int location, size;
-            printf("Which of the %d memory words would you like to start at : ", mem_size);
-            scanf("%x", &location);
-            printf("Enter the number of words to read: ");
-            scanf("%x", &size);
-            Read(location, size);
-
-        }
-        else if (strcmp(user_input, "write") == 0)
-        {
-            int location, value, size;
-            printf("Which of the %d memory words would you like to start at : ", mem_size);
-            scanf("%x", &location);
-            printf("Enter the data to be entered: ");
-            scanf("%x", &value);
-            printf("Enter the number of words to write: ");
-            scanf("%x", &size);
-            Write(location, value, size);
-        }
-        else if (strcmp(user_input, "invert") == 0)
-        {
-            invert();
-        }
-        else if (strcmp(user_input, "exit") == 0)
-        {
-	    mem_free();
-            exit(0);
-        }
-        // else
-        // {
-        //     printf("Invalid input. Enter help for available commands.\n>>");
-        // }*/
     }
+}
+
+void functionnotfound (void)
+{
+     printf("User input does not match any of the options. Please try again.\n>>");
 }
